@@ -1,0 +1,41 @@
+name: Generate 300 Test Cases
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-testcases:
+    name: Generate 300 Structured Test Cases
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 'lts/*'
+
+      - name: Install dependencies
+        run: |
+          cd Backend
+          npm install
+
+      - name: Run test case generator
+        working-directory: ./
+        run: node scripts/ci/generate-300-testcases.js
+
+      - name: Upload generated test case reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: 300-test-cases-reports
+          path: ci-reports/300-test-cases
+
+      - name: Show summary
+        run: |
+          echo "Generated 300 structured test cases and uploaded artifact."
+          echo "Output directory: ci-reports/300-test-cases"

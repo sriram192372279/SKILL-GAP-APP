@@ -13,13 +13,13 @@ import {
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA1G0m4qcc92M2181PM-MFkxL7M1y6Afpo",
-  authDomain: "skill-gap-35a66.firebaseapp.com",
-  projectId: "skill-gap-35a66",
-  storageBucket: "skill-gap-35a66.firebasestorage.app",
-  messagingSenderId: "570682841937",
-  appId: "1:570682841937:web:065a4ce71a18732ef71170",
-  measurementId: "G-8X1S6E8LS4"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyA1G0m4qcc92M2181PM-MFkxL7M1y6Afpo",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "skill-gap-35a66.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "skill-gap-35a66",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "skill-gap-35a66.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "570682841937",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:570682841937:web:065a4ce71a18732ef71170",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-8X1S6E8LS4"
 };
 
 // Initialize Firebase
